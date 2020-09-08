@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "访客预约",
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle":"dark",
+  "onReachBottomDistance": 200  
+}

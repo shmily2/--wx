@@ -1,0 +1,25 @@
+@import "../../common/vendor.wxss";
+
+.log-list {
+  display: flex;
+  padding: 20rpx;
+}
+.log-list > ._li > ._a {
+  width: 200rpx;
+  height: 260rpx;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.log-list > ._li > ._a > ._img {
+  width: 80rpx;
+  height: 80rpx;
+  margin-bottom: 10rpx;
+}
+._button {
+  background: #07c160;
+  color: #fff;
+  border-radius: 10rpx;
+}

@@ -1,0 +1,23 @@
+<template name="0e0ba5d8">
+  <view class="_view data-v-a965863e">
+    <view class="_view data-v-a965863e box">
+      <view wx:key="index" key="{{index}}" wx:for="{{formdata}}" wx:for-index="index" wx:for-item="item" class="_view data-v-a965863e">
+        <view class="_view data-v-a965863e weui-cell__bd" wx:if="{{item.type=='text' && item.show==true}}">
+          <van-icon name="{{item.contact}}" color="{{item.color}}" class="_van-icon data-v-a965863e"></van-icon> <text class="_text data-v-a965863e">{{item.title}}</text> <input class="_input data-v-a965863e weui-input" value="{{value[item.prop]}}" disabled="{{item.disabled}}" hidden="{{!(item.show ?item.show:true)}}" />
+        </view>
+        <view wx:elif="{{item.type=='upload' && item.fileList.length>0}}" class="_view data-v-a965863e">
+          <view class="_view data-v-a965863e weui-cell__up">
+            <van-icon name="{{item.contact}}" color="{{item.color}}" class="_van-icon data-v-a965863e"></van-icon> <text class="_text data-v-a965863e">{{item.title}}</text>
+          </view>
+          <van-uploader class="_van-uploader data-v-a965863e weui-cell__bd" file-list="{{item.fileList }}" deletable="{{item.deletable}}" maxCount="{{item.maxCount}}"></van-uploader>
+        </view>
+        <view wx:elif="{{item.type=='textarea'}}" class="_view data-v-a965863e rich">
+          <view class="_view data-v-a965863e txts">
+            <van-icon name="{{item.contact}}" color="{{item.color}}" class="_van-icon data-v-a965863e"></van-icon> <text class="_text data-v-a965863e">{{item.title}}</text>
+          </view> <textarea required="{{item.required}}" disabled="{{item.disabled}}" placeholder="{{item.placeholder}}" bindblur="handleProxy" data-eventid="{{'0_'+index}}" data-comkey="{{$k}}" class="_textarea data-v-a965863e" />
+        </view>
+      </view>
+      <van-toast id="van-toast" class="_van-toast data-v-a965863e"></van-toast>
+    </view>
+  </view>
+</template>

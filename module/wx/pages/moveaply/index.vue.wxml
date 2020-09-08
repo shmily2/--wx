@@ -1,0 +1,3 @@
+<import src="/components/form.vue.wxml" /><template name="2a2e2eb3">
+  <view class="_view data-v-301cded3 visitor"><template bindformSubmit="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}" data="{{...$root[$kk+'0'], $root}}" is="a8e7433c"></template></view>
+</template>

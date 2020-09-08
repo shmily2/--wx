@@ -1,0 +1,35 @@
+<template name="13137bc6">
+  <view class="_view data-v-6b68be59 search">
+    <view class="_view data-v-6b68be59 add">
+      <van-button type="primary" bindtap="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}" class="_van-button data-v-6b68be59">新增</van-button>
+    </view>
+    <view class="_view data-v-6b68be59 header">
+      <van-search value="{{value[firstprop]}}" placeholder="{{value.firstplaceholder}}" class="_van-search data-v-6b68be59"></van-search>
+      <van-search value="{{value[twoprop]}}" placeholder="{{value.twoplaceholder}}" class="_van-search data-v-6b68be59"></van-search>
+      <van-button type="primary" bindtap="handleProxy" style="flex-shrink:0;margin-right:5px;" data-eventid="{{'1'}}" data-comkey="{{$k}}" class="_van-button data-v-6b68be59">搜索</van-button>
+    </view>
+    <view scroll-view type="primary" class="_view data-v-6b68be59 lists" wx:if="{{appList.length>0}}">
+      <view class="_view data-v-6b68be59 listbox" bindtap="handleProxy" wx:key="index" key="{{index}}" data-eventid="{{'2_'+index}}" data-comkey="{{$k}}" wx:for="{{appList}}" wx:for-index="index" wx:for-item="item">
+        <view class="_view data-v-6b68be59 first between">
+          <view class="_view data-v-6b68be59 fitstleft">
+            <van-icon name="{{item.fcontact}}" color="{{item.fcolor}}" class="_van-icon data-v-6b68be59"></van-icon> <text class="_text data-v-6b68be59">{{item.ID}}</text>
+          </view>
+          <van-button type="primary" class="_van-button data-v-6b68be59">{{item.PEOPLENAME}}</van-button>
+        </view>
+        <view class="_view data-v-6b68be59 first">
+          <van-icon name="{{item.tcontact}}" color="{{item.tcolor}}" class="_van-icon data-v-6b68be59"></van-icon> <text class="_text data-v-6b68be59">{{item.cardtitle}}</text> <text type="primary" class="_text data-v-6b68be59">{{item.IDENTITYNUMBER}}</text>
+        </view>
+        <view class="_view data-v-6b68be59 first">
+          <van-icon name="{{item.scontact}}" color="{{item.scolor}}" class="_van-icon data-v-6b68be59"></van-icon> <text class="_text data-v-6b68be59">{{item.comptitle}}</text> <text type="primary" class="_text data-v-6b68be59">{{item.DEPTNAME}}</text>
+        </view>
+        <view class="_view data-v-6b68be59 first">
+          <van-icon name="{{item.econtact}}" color="{{item.ecolor}}" class="_van-icon data-v-6b68be59"></van-icon> <text class="_text data-v-6b68be59">{{item.shartTime}}</text> <text type="primary" class="_text data-v-6b68be59">{{item.FROMTIME}}</text>
+        </view>
+        <view class="_view data-v-6b68be59 first">
+          <van-icon name="{{item.gcontact}}" color="{{item.gcolor}}" class="_van-icon data-v-6b68be59"></van-icon> <text class="_text data-v-6b68be59">{{item.endTime}}</text> <text type="primary" class="_text data-v-6b68be59">{{item.TOTIME}}</text>
+        </view>
+      </view>
+    </view>
+    <view class="_view data-v-6b68be59 empty" wx:else>暂无记录!</view>
+  </view>
+</template>

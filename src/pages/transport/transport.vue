@@ -11,7 +11,7 @@
 <script>
 import {formatWithSeperator,getBase64Image}  from  "../../utils/datetime"
 import {ID,isMobile,regxcard,regxPlusDecimal2,number}  from  "../../utils/validate"
-import Toast from '../../../dist/wx/vant-weapp/dist/toast/toast';
+import Toast from '../../../module/wx/vant-weapp/dist/toast/toast';
 import FormComponents from "../../components/form"
 export default { 
   name:"visitor",

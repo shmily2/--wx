@@ -13,17 +13,17 @@
     "pages/transportDetails/main"
   ],
   "usingComponents": {
-    "van-button": "vant-weapp/dist/button/index",
-    "van-field":"vant-weapp/dist/field/index",
-    "van-cell":"vant-weapp/dist/cell/index",
-    "cell-group":"vant-weapp/dist/cell-group/index",
-    "van-icon": "vant-weapp/dist/icon/index",
-    "van-uploader":"vant-weapp/dist/uploader/index",
-    "van-action-sheet": "vant-weapp/dist/action-sheet/index",
-    "van-search": "vant-weapp/dist/search/index",
-    "van-datetime-picker":"vant-weapp/dist/datetime-picker/index",
-    "van-popup":"vant-weapp/dist/popup/index",
-    "van-toast": "vant-weapp/dist/toast/index"
+    "van-button": "vant-weapp/module/button/index",
+    "van-field":"vant-weapp/module/field/index",
+    "van-cell":"vant-weapp/module/cell/index",
+    "cell-group":"vant-weapp/module/cell-group/index",
+    "van-icon": "vant-weapp/module/icon/index",
+    "van-uploader":"vant-weapp/module/uploader/index",
+    "van-action-sheet": "vant-weapp/module/action-sheet/index",
+    "van-search": "vant-weapp/module/search/index",
+    "van-datetime-picker":"vant-weapp/module/datetime-picker/index",
+    "van-popup":"vant-weapp/module/popup/index",
+    "van-toast": "vant-weapp/module/toast/index"
   },
   "window": {
     "backgroundTextStyle": "light",
