@@ -5,8 +5,7 @@
       <button open-type="getUserInfo" @getuserinfo="bindGetUserInfo">确认授权</button>
     </div>
     <div v-if="cancelAuth" class="refuse">请授权，否则无法进入哦~</div>
-
-      <div v-if="isPone" class="alert" >
+      <!-- <div v-if="isPone" class="alert" >
       <div class="auth">
         <div class="apply">
           <span class="">需要获取您的手机权限</span>
@@ -14,7 +13,7 @@
         </div>
         <button class="confirm" open-type="getPhoneNumber" @getphonenumber="getPhoneNumber">确认</button>
       </div>
-    </div>
+    </div> -->
   </view>
 </template>
 <script>
@@ -24,7 +23,6 @@ export default {
     return {
       cancelAuth: false,//判断用户是否拒绝获取信息
       newType: '',
-      path: '../home/main',
       shareDetail: {},
       code: '',
       isPone: false  //用于显示获取手机权限窗口
@@ -49,7 +47,9 @@ export default {
       let obj = wx.getStorageSync('USER_INFO')
       console.log(obj, 'USER_INFOUSER_INFO')
       if (obj) {
-        wx.switchTab({ url: this.path })
+        wx.navigateTo({
+            url:'../index/main'
+          })
       } else {
         wx.login({
           success (res) {
@@ -83,14 +83,17 @@ export default {
           name: e.mp.detail.userInfo.nickName,
           userIcon: e.mp.detail.userInfo.avatarUrl,
         }
+          wx.navigateTo({
+            url:'../index/main'
+         })
       } else {
         // 用户按了拒绝按钮
         this.cancelAuth = true
+
       }
     }
   },
   onShow () {
-    this.path ='../home/main'
     this.login()
   }
 }
