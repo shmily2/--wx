@@ -1,0 +1,35 @@
+{
+  "pages": [
+    "pages/login/main",
+    "pages/index/main",
+    "pages/visitor/main",
+    "pages/visitorSearch/main",
+    "pages/visitorDetails/main",
+    "pages/moveaply/main",
+    "pages/moveaplySearch/main",
+    "pages/moveaplyDearch/main",
+    "pages/transport/main",
+    "pages/transportSearch/main",
+    "pages/transportDetails/main"
+  ],
+  "usingComponents": {
+    "van-button": "vant-weapp/dist/button/index",
+    "van-field":"vant-weapp/dist/field/index",
+    "van-cell":"vant-weapp/dist/cell/index",
+    "cell-group":"vant-weapp/dist/cell-group/index",
+    "van-icon": "vant-weapp/dist/icon/index",
+    "van-uploader":"vant-weapp/dist/uploader/index",
+    "van-action-sheet": "vant-weapp/dist/action-sheet/index",
+    "van-search": "vant-weapp/dist/search/index",
+    "van-datetime-picker":"vant-weapp/dist/datetime-picker/index",
+    "van-popup":"vant-weapp/dist/popup/index",
+    "van-toast": "vant-weapp/dist/toast/index"
+  },
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "新沂封闭园区",
+    "navigationBarTextStyle": "black"
+   }
+}
+  
