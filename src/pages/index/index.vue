@@ -46,11 +46,7 @@
 </template>
 <script>
 import { formatTime } from '@/utils/index'
-import card from '@/components/form'
 export default {
-  components: {
-    card
-  },
   data () {
     return {
       logs: [],
