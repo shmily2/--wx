@@ -1,5 +1,5 @@
 <template>
-  <view class="authorize-contianer">
+  <div class="authorize-contianer">
     <div class="auth-item" @click="login">请微信授权</div>
     <div class="btn-authorize">
       <button open-type="getUserInfo" @getuserinfo="bindGetUserInfo">确认授权</button>
@@ -14,7 +14,7 @@
         <button class="confirm" open-type="getPhoneNumber" @getphonenumber="getPhoneNumber">确认</button>
       </div>
     </div> -->
-  </view>
+  </div>
 </template>
 <script>
 // import { getToken } from '@/api/main'
