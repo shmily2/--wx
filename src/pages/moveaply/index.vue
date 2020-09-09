@@ -797,7 +797,7 @@ export default {
         {
           type:"textarea",
           title:"应急处理措施（设备）:",
-          message:"",
+            message:"",
            prop:"carDeal",
            contact:"user-circle-o",
           color:'#ff976a',
