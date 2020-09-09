@@ -7,7 +7,7 @@
     "pages/visitorDetails/main",
     "pages/moveaply/main",
     "pages/moveaplySearch/main",
-    "pages/moveaplyDearch/main",
+    "pages/moveaplyDetails/main",
     "pages/transport/main",
     "pages/transportSearch/main",
     "pages/transportDetails/main"

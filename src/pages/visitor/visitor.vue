@@ -24,6 +24,7 @@ export default {
         values:{
           leixing:'访客临时通行卡'
         },
+        company:[],
         formatter (type, value) {
             if (type === 'year') {
               return `${value}年`
@@ -73,20 +74,19 @@ export default {
               Toast(this.message);
             }
           },
-          // 监听输入变化
-          onInput(value){
-            // console.log(value.mp.detail);
+        // 监听输入变化
+        onInput(value){
             that.formdata[0].searchvalue = value.mp.detail;
             let listdata=[];
             if(value.mp.detail.length < 1){
               that.getCompany();
             }else{
-              for(var i=0;i<that.formdata[0].actions.length;i++){
-                if(that.formdata[0].actions[i].deptName.indexOf(value.mp.detail) != -1){
-                  listdata.push(that.formdata[0].actions[i])
+              for(var i=0;i<that.company.length;i++){
+                if(that.company[i].deptName.indexOf(value.mp.detail) != -1){
+                  listdata.push(that.company[i])
                 }
               }
-              that.formdata[0].actions = listdata
+               that.formdata[0].actions = listdata
             }
           },
           //选中
@@ -793,18 +793,7 @@ export default {
         };
     },
     mounted(){
-      //访问单位
-      this.$http.post({
-      url: 'system/department!ajaxAppDepts',
-        data : {},
-      }).then(res => {
-          if(res.result=="success"){
-            res.data.map(item=>{
-              item.name =item.deptName
-            })
-            this.formdata[0].actions= res.data
-          }
-      })
+      this.getCompany() 
     },
     methods: {
       //提交app!ajaxCommitTemp
@@ -813,8 +802,23 @@ export default {
         },
         clearImg(e){
           console.log(e)
-        }
+        },
+      getCompany(){
+              //访问单位
+        this.$http.post({
+        url: 'system/department!ajaxAppDepts',
+          data : {},
+        }).then(res => {
+            if(res.result=="success"){
+              res.data.map(item=>{
+                item.name =item.deptName
+              })
+              this.formdata[0].actions= res.data
+              this.company =res.data
+            }
+        })
       }
+   }
 }
 </script>
 <style>

@@ -24,23 +24,23 @@ export default {
         ID:'lime',
         fcontact:"user-circle-o",
         fcolor:'#1989fa',
-        cardtitle:"身份证号码:",
-        tcontact:"idcard",
-        tcolor:'#1989fa',
-        comptitle:"到访单位:",
-        scolor:'#1989fa',
-        scontact:"wap-home-o",
-        shartTime:"来访时间:",
+        cardtitle:"驾驶员联系方式:",
+        tcontact:"phone-circle-o",
+        tcolor:"#ee0a24",
+        comptitle:"车牌号:",
+        scolor:'#ff976a',
+        scontact:"logistics",
+        shartTime:"车辆类型:",
         ecolor:'#07c160',
-        econtact:"underway-o",
-        endTime:"离开时间:",
-        gcolor:'#07c160',
-        gcontact:"underway-o",
+        econtact:"logistics",
+        endTime:"运输单号:",
+        gcolor:'#1989fa',
+        gcontact:"orders-o",
         PEOPLENAME:'待审核',
-        IDENTITYNUMBER:"3201236541236598456",
-        DEPTNAME:'江苏大范德萨发生的',
-        FROMTIME:'20120306 08:32',
-        TOTIME:'20120306 09:32',
+        IDENTITYNUMBER:"137776661247",
+        DEPTNAME:'苏c1234',
+        FROMTIME:'临时',
+        TOTIME:'tesr002',
       }], // 列表数据
       page: 1,      // 当前页数
       total_page: 0,// 总页数
@@ -106,7 +106,7 @@ export default {
     },
     details(){
       wx.navigateTo({
-        url:'../moveaplyDearch/main'
+        url:'../moveaplyDetails/main'
       })
     },
     search(){

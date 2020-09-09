@@ -22,6 +22,8 @@ export default {
     let that=this
     return {
       value:{ },
+      company:[],
+      chemicals:[],
       formatter (type, value) {
         if (type === 'year') {
           return `${value}年`
@@ -48,7 +50,8 @@ export default {
           disabled:false,
           placeholder:"请输入运输单号",
           required:true,
-          contact:"wap-home-o",
+          contact:"orders-o",
+           color:"#1989fa" ,
           change:(event)=>{
             that.value.transNo=event.mp.detail.value
             if( that.value.transNo){
@@ -68,6 +71,7 @@ export default {
           prop:"dept",
           placeholder:"请选择前往企业",
           required:true,
+          color:'#1989fa',
           contact:"wap-home-o",
           showsecect:false,
           activeaction:'',
@@ -81,19 +85,18 @@ export default {
             that.getCompany();
           },
           // 监听输入变化
-          onInput(value){
-            // console.log(value.mp.detail);
+        onInput(value){
             that.formdata[1].searchvalue = value.mp.detail;
             let listdata=[];
             if(value.mp.detail.length < 1){
               that.getCompany();
             }else{
-              for(var i=0;i<that.formdata[1].actions.length;i++){
-                if(that.formdata[1].actions[i].deptName.indexOf(value.mp.detail) != -1){
-                  listdata.push(that.formdata[1].actions[i])
+              for(var i=0;i<that.company.length;i++){
+                if(that.company[i].deptName.indexOf(value.mp.detail) != -1){
+                  listdata.push(that.company[i])
                 }
               }
-              that.formdata[1].actions = listdata
+               that.formdata[1].actions = listdata
             }
           },
           //关闭弹框
@@ -125,6 +128,7 @@ export default {
           placeholder:"请输入车辆所属企业",
           required:false,
           contact:"wap-home-o",
+          color:"#ee0a24",
           change:(event)=>{
             that.value.enterprise=event.mp.detail.value
           }
@@ -139,6 +143,7 @@ export default {
           required:true,
           show:true,
           contact:"logistics",
+          color:'#ff976a',
           change:(event,index)=>{
             that.value.carNo=event.mp.detail.value
             if(that.value.carNo){
@@ -167,6 +172,7 @@ export default {
           placeholder:"",
           required:false,
           contact:"credit-pay",
+           color:'#07c160',
         },{
           title:"运输重量:",
           judge:false,//判断
@@ -178,6 +184,7 @@ export default {
           placeholder:"请输入运输重量",
           required:true,
           contact:"logistics",
+          color:'#07c160',
           change:(event)=>{
             that.value.carETC=event.mp.detail.value
             if(that.value.carETC){
@@ -206,7 +213,8 @@ export default {
           prop:"dangerGoodName",
           placeholder:"请选择危化品名称",
           required:true,
-          contact:"wap-home-o",
+          contact:"warn-o",
+          color:"#ee0a24",
           showsecect:false,
           activeaction:'',
           show:true,
@@ -216,7 +224,7 @@ export default {
           secetevent:(index)=>{
             that.formdata[index].showsecect=true;
             that.formdata[6].searchvalue = ""
-            that.getCompany();
+            that.getChemicals();
           },
           // 监听输入变化
           onInput(value){
@@ -225,11 +233,11 @@ export default {
             that.formdata[6].searchvalue = value.mp.detail;
             let listdata=[];
             if(value.mp.detail.length < 1){
-              that.getCompany();
+              that.getChemicals();
             }else{
-              for(var i=0;i<that.formdata[6].actions.length;i++){
-                if(that.formdata[6].actions[i].name.indexOf(value.mp.detail) != -1){
-                  listdata.push(that.formdata[6].actions[i])
+              for(var i=0;i<that.chemicals.length;i++){
+                if(that.chemicals[i].name.indexOf(value.mp.detail) != -1){
+                  listdata.push(that.chemicals[i])
                 }
               }
               that.formdata[6].actions = listdata
@@ -264,6 +272,7 @@ export default {
           prop:"inOut",
           placeholder:"请选择货运状态",
           contact:"logistics",
+          color:"#1989fa",
           showsecect:false,
           activeaction:'',
           show:true,
@@ -308,6 +317,7 @@ export default {
           placeholder:"请输入货物来源",
           required:false,
           contact:"wap-home-o",
+          color:"#ff976a",
           change:(event)=>{
             that.value.goodsSource=event.mp.detail.value
           }
@@ -321,6 +331,7 @@ export default {
           placeholder:"请选择预约开始时间",
           required:true,
           contact:"underway-o",
+          color:"#07c160",
           showsecect:false,
           activeaction:'',
           show:true,
@@ -360,6 +371,7 @@ export default {
           placeholder:"请选择预约结束时间",
           required:true,
           contact:"underway-o",
+           color:"#07c160",
           showsecect:false,
           show:true,
           activeaction:'',
@@ -408,6 +420,7 @@ export default {
           placeholder:"请输入驾驶员姓名",
           required:true,
           contact:"user-circle-o",
+          color:"#1989fa",
           change:(event)=>{
             that.value.driverName=event.mp.detail.value
             if(that.value.driverName){
@@ -429,6 +442,7 @@ export default {
           disabled:false,
           placeholder:"请输入驾驶员身份证",
           contact:"idcard",
+          color:"#1989fa",
           change:(event)=>{
             that.value.driverIDNum=event.mp.detail.value
             if(that.value.driverIDNum){
@@ -459,6 +473,7 @@ export default {
           placeholder:"请输入驾驶员手机号",
           required:true,
           contact:"phone-circle-o",
+           color:'#1989fa',
           change:(event)=>{
             that.value.driverPhone=event.mp.detail.value
             if(that.value.driverPhone){
@@ -489,6 +504,7 @@ export default {
           placeholder:"请输入押运员姓名",
           required:true,
           contact:"user-circle-o",
+          color:"#07c160",
           change:(event)=>{
             that.value.yayunName=event.mp.detail.value
             if(that.value.yayunName){
@@ -510,6 +526,7 @@ export default {
           disabled:false,
           placeholder:"请输入押运员身份证",
           contact:"idcard",
+          color:"#ff976a",
           change:(event)=>{
             that.value.yayunID=event.mp.detail.value
             if(that.value.yayunID){
@@ -540,6 +557,7 @@ export default {
           placeholder:"请输入驾驶员手机号",
           required:true,
           contact:"phone-circle-o",
+          color:"#ee0a24",
           change:(event)=>{
             that.value.yayunPhone=event.mp.detail.value
             if(that.value.yayunPhone){
@@ -561,6 +579,8 @@ export default {
           }
         },{
           title:"司机驾驶证:",
+          contact:"idcard",
+          color:'#07c160',
           judge:false,//判断
           show:true,
           multiple:false,
@@ -607,6 +627,8 @@ export default {
         },{
           title:"车辆行驶证:",
           message:'请上传车辆行驶证',
+          contact:"idcard",
+          color:'#07c160',
           judge:false,//判断
           maxCount:1,
           disabled:true,
@@ -634,6 +656,8 @@ export default {
           }
         },{
           title:"审批文件:",
+          contact:"idcard",
+          color:'#07c160',
           type:"upload",
           maxCount:1,
           judge:true,//判断
@@ -656,6 +680,8 @@ export default {
           }
         },{
           title:"其他审批文件1:",
+          contact:"idcard",
+          color:'#07c160',
           judge:true,//判断
           multiple:false,
           maxCount:1,
@@ -679,6 +705,8 @@ export default {
           }
         },{
           title:"其他审批文件2:",
+          contact:"idcard",
+          color:'#07c160',
           maxCount:1,
           judge:true,//判断
           multiple:false,
@@ -701,6 +729,8 @@ export default {
           }
         },{
           title:"其他审批文件3:",
+          contact:"idcard",
+          color:'#07c160',
           maxCount:1,
           judge:true,//判断
           multiple:false,
@@ -723,6 +753,8 @@ export default {
           }
         },{
           title:"其他审批文件4:",
+          contact:"idcard",
+          color:'#07c160',
           maxCount:1,
           judge:true,//判断
           multiple:false,
@@ -745,6 +777,8 @@ export default {
           }
         },{
           title:"其他审批文件5:",
+          contact:"idcard",
+          color:'#07c160',
           judge:true,//判断8608917@qq.com
           multiple:false,
           maxCount:1,
@@ -774,6 +808,7 @@ export default {
           disabled:false,
           placeholder:"请输入应急处理措施（设备）:",
           required:false,
+           color:'#ff976a',
           contact:"user-circle-o",
           change:(event,index)=>{
              that.value.carDeal=event.mp.detail.value
@@ -787,6 +822,7 @@ export default {
           disabled:false,
           placeholder:"请输入备注:",
           required:true,
+          color:'#ee0a24',
           contact:"edit",
           change:(event,index)=>{
             that.value.bz1=event.mp.detail.value
@@ -803,6 +839,7 @@ export default {
   },
   mounted(){
     this.getCompany()
+    this.getChemicals()
   },
   methods: {
     //访问单位
@@ -816,8 +853,11 @@ export default {
             item.name =item.deptName
           })
           this.formdata[1].actions= res.data
+          this.company =res.data
         }
       })
+    },
+    getChemicals(){
       //危化品名称
       this.$http.post({
         url: 'app!Chemicals',
@@ -829,6 +869,8 @@ export default {
             item.name =item.NAME
           })
           this.formdata[6].actions=res.data
+          this.chemicals=res.data
+          this.chemicals.push( {name:"空车"})
           this.formdata[6].actions.push( {name:"空车"})
         }
       })
