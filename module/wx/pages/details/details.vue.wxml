@@ -1,5 +1,0 @@
-<template name="2f5c46ea">
-  <view class="_view data-v-5dc7c642 details">
-    <detailsdom formdata="{{formdata}}" value="{{value}}" class="_detailsdom data-v-5dc7c642"></detailsdom>
-  </view>
-</template>

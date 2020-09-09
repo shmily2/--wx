@@ -10,9 +10,9 @@
         circular="true"
         duration="500"
       >
-        <block v-for="(item, index) in imgUrls" :key="index">
+      <block v-for="(item, index) in imgUrls" :key="index">
           <swiper-item>
-            <image :src="item" mode="scaleToFill" style="width:100%;" />
+            <image :src="item" mode="scaleToFill" style="width:100%;"/>
           </swiper-item>
         </block>
       </swiper>
@@ -38,9 +38,9 @@
       </ul>
     </div>
     <div>
-      <!-- <van-popup :show="show" bind:close="onClose">
-        <button  open-type="getPhoneNumber" @getphonenumber="getPhoneNumber">微信授权一键登录</button>
-      </van-popup>-->
+    <!--<van-popup :show="show" bind:close="onClose">
+      <button  open-type="getPhoneNumber" @getphonenumber="getPhoneNumber">微信授权一键登录</button>
+    </van-popup>-->
     </div>
   </div>
 </template>

@@ -27,7 +27,7 @@
 		"useCompilerModule": true,
 		"userConfirmedUseCompilerModuleSwitch": true
 	},
-	"miniprogramRoot": "module/wx/",
+	"miniprogramRoot": "dist/wx/",
 	"compileType": "miniprogram",
 	"appid": "wx7d16e39c90c12063",
 	"projectname": "xinyiWX",

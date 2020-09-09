@@ -1,3 +1,0 @@
-<import src="/components/search.vue.wxml" />
-<import src="/components/details.vue.wxml" />
-<import src="/components/form.vue.wxml" />

@@ -1,3 +1,0 @@
-<import src="/components/search.vue.wxml" /><template name="6ac286a8">
-  <view class="_view data-v-a0bc28f4 search"><template bindadd="handleProxy" bindsearch="handleProxy" binddetails="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}" data="{{...$root[$kk+'0'], $root}}" is="13137bc6"></template></view>
-</template>
