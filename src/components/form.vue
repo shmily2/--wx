@@ -134,11 +134,11 @@ export default {
   padding: 10px 15px;
 }
 .weui-cell__bd ._text {
-  width: 32%;
+  width: 35%;
 }
 .weui-input {
   text-align: right;
-  width: 68%;
+  width: 65%;
   font-size: 15px;
   color: rgb(94, 92, 92);
 }
