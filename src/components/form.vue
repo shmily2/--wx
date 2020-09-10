@@ -113,9 +113,9 @@
 export default {
   props: ['formatter',"value","formdata"],
   methods:{
-     formSubmit (form) {
-       console.log(form)
-        this.$emit("formSubmit")
+     formSubmit (e) {
+       console.log(e.map.value)
+        this.$emit("formSubmit",e)
         }
   },
 }
