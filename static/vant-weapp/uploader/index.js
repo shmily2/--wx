@@ -108,13 +108,13 @@ VantComponent({
               file=res.tempFiles
             }else{
               file=res.tempFiles[0]
-              // wx.getFileSystemManager().readFile({
-              //   filePath:file.path, //选择图片返回的相对路径
-              //   encoding: 'base64', //编码格式
-              //   success: res => { //成功的回调
-              //     file.path = 'data:image/png;base64,' + res.data
-              //   }
-              // })
+              wx.getFileSystemManager().readFile({
+                filePath:file.path, //选择图片返回的相对路径
+                encoding: 'base64', //编码格式
+                success: res => { //成功的回调
+                  file.path = 'data:image/png;base64,' + res.data
+                }
+              })
             }
           }
           this.onBeforeRead(file);
@@ -147,7 +147,15 @@ VantComponent({
       if (isPromise(res)) {
         res.then((data) => this.onAfterRead(data || file));
       } else {
-        this.onAfterRead(file);
+        // this.onAfterRead(file);
+        wx.getFileSystemManager().readFile({
+          filePath:file.path, //选择图片返回的相对路径
+          encoding: 'base64', //编码格式
+          success: res => { //成功的回调
+            file.path = 'data:image/png;base64,' + res.data
+            this.onAfterRead(file);
+          }
+        })
       }
     },
     onAfterRead(file) {
