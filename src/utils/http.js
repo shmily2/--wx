@@ -21,7 +21,7 @@ function request (url, method, data) {
       method: method,
       data: data,
       headers: {
-        'content-type': 'application/x-www-form-urlencoded',
+        'content-type': 'application/json',
       },
       success: function (res) {
         var json = res.data

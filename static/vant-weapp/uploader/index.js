@@ -103,7 +103,19 @@ VantComponent({
           if (isVideo(res, accept)) {
             file = Object.assign({ path: res.tempFilePath }, res);
           } else {
-            file = multiple ? res.tempFiles : res.tempFiles[0];
+            // file = multiple ? res.tempFiles : res.tempFiles[0];
+            if(multiple){
+              file=res.tempFiles
+            }else{
+              file=res.tempFiles[0]
+              // wx.getFileSystemManager().readFile({
+              //   filePath:file.path, //选择图片返回的相对路径
+              //   encoding: 'base64', //编码格式
+              //   success: res => { //成功的回调
+              //     file.path = 'data:image/png;base64,' + res.data
+              //   }
+              // })
+            }
           }
           this.onBeforeRead(file);
         })

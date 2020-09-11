@@ -544,12 +544,13 @@ export default {
           disabled:true,
           required:true,
             fileList: [
-             { url: 'https://img.yzcdn.cn/vant/leaf.jpg', name: '图片1' },
+             { url: 'http://tmp/wx7d16e39c90c12063.o6zAJs-O-a8ZnAsYeTcBE_UaAonQ.rHbtaZZUZRK5ce4f1f64a44e7f94189af9484edba640.jpg' },
               // Uploader 根据文件后缀来判断是否为图片文件
               // 如果图片 URL 中不包含类型信息，可以添加 isImage 标记来声明
             ],
           afterRead(event,index){
-          const { file } = event.mp.detail;
+             const { file } = event.mp.detail;
+             console.log(file)
           this.fileList.push({
             url:file.path,
             name: file.name,
@@ -560,6 +561,7 @@ export default {
             // 当设置 mutiple 为 true 时, file 为数组格式，否则为对象格式
             that.$http.post({
               url: 'app!fileUpload', // 仅为示例，非真实的接口地址
+   
               name: 'file',
               data:{
                 "imgbese":file.path,
@@ -592,6 +594,7 @@ export default {
           fileList: [],
           afterRead(event,index){
             const { file } = event.mp.detail;
+            console.log(file)
             this.fileList.push({
               url:file.path,
               name: file.name,
