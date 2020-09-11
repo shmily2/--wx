@@ -134,15 +134,15 @@ export default {
               let time= formatWithSeperator(e.mp.detail,"-",":") 
               that.values.begTime = time
               that.formdata[index].showsecect=false;
-              this.judge=true
+              that.formdata[index].judge=true
           },
           cancel:(e,index)=>{
             console.log(that.formdata[index].showsecect)
             if(that.values.begTime){
-                this.judge=true
+                that.formdata[index].judge=true
               }else{
-                this.judge=false
-                this.message="请选择预约来访时间"
+                that.formdata[index].judge=false
+                that.formdata[index].message="请选择预约来访时间"
                 Toast(this.message);
             }
             that.formdata[index].showsecect=false;
@@ -167,8 +167,8 @@ export default {
              if(that.values.begTime){
                that.formdata[index].showsecect=true;
              }else{
-               this.message="请先选择预约来访时间"
-               Toast(this.message)
+               that.formdata[index].message="请先选择预约来访时间"
+               Toast(that.formdata[index].message)
              }
           },
           minDate: new Date().getTime(),
@@ -178,22 +178,24 @@ export default {
           confirm:(e,index)=>{
           let time= formatWithSeperator(e.mp.detail,"-",":") 
             if(time>that.values.begTime){
-                this.judge=true
+                that.formdata[index].judge=true
                 that.values.endTime = time
                 that.formdata[index].showsecect=false;
            }else {
-              this.judge=false
-              this.message="预约离开时间必须大于预约来访时间"
-              Toast(this.message);
+              that.formdata[index].judge=false
+              that.formdata[index].message="预约离开时间必须大于预约来访时间"
+              Toast(that.formdata[index].message);
              }
           },
         cancel:(e,index)=>{
           if(that.values.endTime){
-              this.judge=true
+              that.formdata[index].judge=true
+              that.formdata[index].showsecect=false;
            }else {
-              this.judge=false
-              this.message="请选择预约离开时间"
-              Toast(this.message);
+              that.formdata[index].showsecect=false;
+              that.formdata[index].judge=false
+              that.formdata[index].message="请选择预约离开时间"
+              Toast(that.formdata[index].message);
            }
           }
         },
@@ -224,14 +226,14 @@ export default {
           required:true,
             contact:"user-circle-o",
            color:'#1989fa',
-          change:(event)=>{
+          change:(event,index)=>{
                that.values.peopleName=event.mp.detail.value
                if(that.values.peopleName){
-                 this.judge=true
+                 that.formdata[index].judge=true
                }else{
-                 this.judge=false
-                 this.message="请输入访客姓名"
-                 Toast(this.message);
+                 that.formdata[index].judge=false
+                 that.formdata[index].message="请输入访客姓名"
+                 Toast(that.formdata[index].message);
                }
           }
         },
@@ -247,21 +249,21 @@ export default {
           prop:"idCard",
           disabled:false,
           placeholder:"请输入访客身份证号",
-          change:(event)=>{
+          change:(event,index)=>{
                that.values.idCard=event.mp.detail.value
                if(that.values.idCard){
-                  this.judge=true
+                  that.formdata[index].judge=true
                }else{
-                   this.judge=false
-                   this.message="请输入访客身份证号"
-                    Toast(this.message);
+                   that.formdata[index].judge=false
+                   that.formdata[index].message="请输入访客身份证号"
+                    Toast(that.formdata[index].message);
                    return
                }
               if(ID(that.values.idCard)){
-                this.judge=true
+                that.formdata[index].judge=true
               }else{
-                this.judge=false
-                this.message="请输入正确的身份证号"
+                that.formdata[index].judge=false
+                that.formdata[index].message="请输入正确的身份证号"
                 Toast(this.message);
                 return
               }
@@ -279,22 +281,22 @@ export default {
           required:true,
           contact:"phone-circle-o",
           color:'#1989fa',
-          change:(event)=>{
+          change:(event,index)=>{
                that.values.peopleTel=event.mp.detail.value
                if(that.values.peopleTel){
-                 this.judge=true
+                  that.formdata[index].judge=true
                }else{
-                  this.judge=false
-                  this.message="请输入访客手机号"
-                 Toast(this.message);
+                   that.formdata[index].judge=false
+                   that.formdata[index].message="请输入访客手机号"
+                 Toast( that.formdata[index].message);
                   return
                }
                if(isMobile(that.values.peopleTel)){
-                  this.judge=true
+                   that.formdata[index].judge=true
                }else {
-                 this.judge=false
-                 this.message="请输入真确的手机号码"
-                 Toast(this.message);
+                  that.formdata[index].judge=false
+                  that.formdata[index].message="请输入真确的手机号码"
+                 Toast( that.formdata[index].message);
                   return
                }
           }
@@ -354,19 +356,19 @@ export default {
             },
           Close(index){
             if(that.values.isOrnot){
-              this.judge=true
+               that.formdata[index].judge=true
             }else{
-              this.judge=false
-              this.message="请选择选择入园方式"
-              Toast(this.message);
+               that.formdata[index].judge=false
+               that.formdata[index].message="请选择选择入园方式"
+              Toast( that.formdata[index].message);
             }
-            this.showsecect=false
+             that.formdata[index].showsecect=false
           },
           onSearch(index,ind){
-            this.activeaction=ind;
-            that.values.isOrnot=this.actions[ind].name;
-            this.judge=true
-            this.showsecect=false
+             that.formdata[index].activeaction=ind;
+            that.values.isOrnot= that.formdata[index].actions[ind].name;
+             that.formdata[index].judge=true
+             that.formdata[index].showsecect=false
             if(that.values.isOrnot=="自驾车" || that.values.isOrnot=="特种车辆" ||that.values.isOrnot=="农用车" ||that.values.isOrnot=="货车"||that.values.isOrnot=="客车"){
                 for(var i=9;i<that.formdata.length;i++){
                 if(i==10 ||i ==11 || i== 12){
@@ -417,19 +419,19 @@ export default {
           change:(event,index)=>{
                that.values.load=event.mp.detail.value
                if(that.values.load){
-                  this.judge=true
+                   that.formdata[index].judge=true
                }else{
-                  this.judge=false
-                  this.message="请输入访客车牌号"
-                 Toast(this.message);
+                   that.formdata[index].judge=false
+                   that.formdata[index].message="请输入访客车牌号"
+                 Toast( that.formdata[index].message);
                   return
                }
                if(regxcard(that.values.load)){
-                  this.judge=true
+                   that.formdata[index].judge=true
                }else{
-                 this.judge=false
-                  this.message="请输入正确的车牌号"
-                 Toast(this.message);
+                  that.formdata[index].judge=false
+                   that.formdata[index].message="请输入正确的车牌号"
+                 Toast( that.formdata[index].message);
                  return
                }
           }
@@ -446,22 +448,22 @@ export default {
           required:true,
            contact:"logistics",
           color:'#07c160',
-          change:(event)=>{
+          change:(event,index)=>{
               that.values.carNum=event.mp.detail.value
               if(that.values.carNum){
-                  this.judge=true
+                   that.formdata[index].judge=true
                }else{
-                  this.judge=false
-                  this.message="请输入载重量"
-                 Toast(this.message);
+                   that.formdata[index].judge=false
+                   that.formdata[index].message="请输入载重量"
+                 Toast( that.formdata[index].message);
                   return
                }
                if(regxPlusDecimal2(that.values.carNum)){
-                  this.judge=true
+                   that.formdata[index].judge=true
                }else{
-                 this.judge=false
-                  this.message="请输入数字最多保留2位小数"
-                 Toast(this.message);
+                  that.formdata[index].judge=false
+                   that.formdata[index].message="请输入数字最多保留2位小数"
+                 Toast( that.formdata[index].message);
                  return
                }
           }
@@ -478,22 +480,22 @@ export default {
           required:true,
           contact:"friends-o",
           color:'#07c160',
-          change:(event)=>{
+          change:(event,index)=>{
                that.values.carrays=event.mp.detail.value
                 if(that.values.carrays){
-                  this.judge=true
+                   that.formdata[index].judge=true
                }else{
-                  this.judge=false
-                  this.message="请输入载客人数"
-                 Toast(this.message);
+                   that.formdata[index].judge=false
+                   that.formdata[index].message="请输入载客人数"
+                 Toast( that.formdata[index].message);
                   return
                }
                if(number(that.values.carrays)){
-                  this.judge=true
+                   that.formdata[index].judge=true
                }else{
-                 this.judge=false
-                  this.message="请输入数字"
-                 Toast(this.message);
+                  that.formdata[index].judge=false
+                   that.formdata[index].message="请输入数字"
+                 Toast( that.formdata[index].message);
                  return
                }
           }
@@ -510,22 +512,22 @@ export default {
           required:true,
           contact:"friends-o",
           color:'#ee0a24',
-          change:(event)=>{
+          change:(event,index)=>{
                that.values.posting=event.mp.detail.value
               if(that.values.posting){
-                  this.judge=true
+                   that.formdata[index].judge=true
                }else{
-                  this.judge=false
-                  this.message="请输入限载人数"
-                 Toast(this.message);
+                   that.formdata[index].judge=false
+                   that.formdata[index].message="请输入限载人数"
+                 Toast( that.formdata[index].message);
                   return
                }
                if(number(that.values.posting)){
-                  this.judge=true
+                   that.formdata[index].judge=true
                }else{
-                 this.judge=false
-                  this.message="请输入数字"
-                 Toast(this.message);
+                  that.formdata[index].judge=false
+                   that.formdata[index].message="请输入数字"
+                 Toast( that.formdata[index].message);
                  return
                }
           }
@@ -550,18 +552,16 @@ export default {
             ],
           afterRead(event,index){
           const { file } = event.mp.detail;
-             console.log(file.path)
-          this.fileList.push({
+          that.formdata[index].fileList.push({
             url:file.path,
             name: file.name,
             isImage: true,
             deletable: true,
           })
-          this.judge=true;
+           that.formdata[index].judge=true;
             // 当设置 mutiple 为 true 时, file 为数组格式，否则为对象格式
             that.$http.post({
               url: 'app!fileUpload', // 仅为示例，非真实的接口地址
-   
               name: 'file',
               data:{
                 "imgbese":file.path,
@@ -572,11 +572,11 @@ export default {
               },
             })
         },
-        del_img(event){
-            this.fileList.splice(event.mp.detail.index,1); 
-            if(this.fileList.length<1){
-                this.judge=false;
-                Toast(this.message)
+        del_img(event,index){
+             that.formdata[index].fileList.splice(event.mp.detail.index,1); 
+            if( that.formdata[index].fileList.length<1){
+                 that.formdata[index].judge=false;
+                Toast( that.formdata[index].message)
             }
           }
         },{
@@ -595,19 +595,19 @@ export default {
           afterRead(event,index){
             const { file } = event.mp.detail;
             console.log(file)
-            this.fileList.push({
+            that.formdata[index].fileList.push({
               url:file.path,
               name: file.name,
               isImage: true,
               deletable: true,
             })
-            this.judge=true;
+            that.formdata[index].judge=true;
           },
-          del_img(event){
-            this.fileList.splice(event.mp.detail.index,1); 
-            if(this.fileList.length<1){
-                this.judge=false;
-                Toast(this.message)
+          del_img(event,index){
+            that.formdata[index].fileList.splice(event.mp.detail.index,1); 
+            if(that.formdata[index].fileList.length<1){
+                that.formdata[index].judge=false;
+                Toast(that.formdata[index].message)
             }
           }
         },{
@@ -624,15 +624,15 @@ export default {
            fileList: [],
            afterRead(event,index){
             const { file } = event.mp.detail;
-            this.fileList.push({
+            that.formdata[index].fileList.push({
               url:file.path,
               name: file.name,
               isImage: true,
               deletable: true,
             })
           },
-          del_img(event){
-            this.fileList.splice(event.mp.detail.index,1); 
+          del_img(event,index){
+            that.formdata[index].fileList.splice(event.mp.detail.index,1); 
           }
         },{
           title:"其他审批文件1:",
@@ -649,15 +649,15 @@ export default {
           fileList: [],
           afterRead(event,index){
             const { file } = event.mp.detail;
-            this.fileList.push({
+            that.formdata[index].fileList.push({
               url:file.path,
               name: file.name,
               isImage: true,
               deletable: true,
             })
           },
-          del_img(event){
-            this.fileList.splice(event.mp.detail.index,1); 
+          del_img(event,index){
+            that.formdata[index].fileList.splice(event.mp.detail.index,1); 
           }
         },{
           title:"其他审批文件2:",
@@ -673,39 +673,39 @@ export default {
           fileList: [],
           afterRead(event,index){
             const { file } = event.mp.detail;
-            this.fileList.push({
+            that.formdata[index].fileList.push({
               url:file.path,
               name: file.name,
               isImage: true,
               deletable: true,
             })
           },
-          del_img(event){
-            this.fileList.splice(event.mp.detail.index,1); 
+          del_img(event,index){
+            that.formdata[index].fileList.splice(event.mp.detail.index,1); 
           }
         },{
           title:"其他审批文件3:",
-              contact:"idcard",
+          contact:"idcard",
            color:'#07c160',
            maxCount:1,
            judge:true,//判断
             multiple:false,
            type:"upload",
           disabled:true,
-           show:false,
-           required:false,
+          show:false,
+          required:false,
           fileList: [],
           afterRead(event,index){
             const { file } = event.mp.detail;
-            this.fileList.push({
+            that.formdata[index].fileList.push({
               url:file.path,
               name: file.name,
               isImage: true,
               deletable: true,
             })
           },
-          del_img(event){
-            this.fileList.splice(event.mp.detail.index,1); 
+          del_img(event,index){
+            that.formdata[index].fileList.splice(event.mp.detail.index,1); 
           }
         },{
           title:"其他审批文件4:",
@@ -721,15 +721,15 @@ export default {
           fileList: [],
           afterRead(event,index){
             const { file } = event.mp.detail;
-            this.fileList.push({
+            that.formdata[index].fileList.push({
               url:file.path,
               name: file.name,
               isImage: true,
               deletable: true,
             })
           },
-          del_img(event){
-            this.fileList.splice(event.mp.detail.index,1); 
+          del_img(event,index){
+            that.formdata[index].fileList.splice(event.mp.detail.index,1); 
           }
         },{
           title:"其他审批文件5:",
@@ -745,15 +745,15 @@ export default {
           fileList: [],
            afterRead(event,index){
             const { file } = event.mp.detail;
-            this.fileList.push({
+            that.formdata[index].fileList.push({
               url:file.path,
               name: file.name,
               isImage: true,
               deletable: true,
             })
           },
-          del_img(event){
-            this.fileList.splice(event.mp.detail.index,1); 
+          del_img(event,index){
+            that.formdata[index].fileList.splice(event.mp.detail.index,1); 
           }
         },
         {
@@ -785,10 +785,10 @@ export default {
           change:(event,index)=>{
               that.values.remark=event.mp.detail.value
               if(that.values.remark){
-                  this.judge=true
+                  that.formdata[index].judge=true
               }else{
-                this.judge=false;
-                Toast(message)
+                that.formdata[index].judge=false;
+                Toast(that.formdata[index].message)
               }
           }
         },
@@ -801,7 +801,11 @@ export default {
     methods: {
       //提交app!ajaxCommitTemp
         formSubmit(event) {
-           console.log(event)
+          this.formdata.some((elem,index,arr)=>{
+            if(elem.judge==false && elem.show==true){
+              return Toast(elem.message)
+            };
+          })
         },
         clearImg(e){
           console.log(e)

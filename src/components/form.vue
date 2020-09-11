@@ -74,6 +74,7 @@
           <text :class="item.required?'required':''">{{item.title}}</text>
           <textarea
             :disabled="item.disabled"
+            :name="item.prop"
             :placeholder="item.placeholder"
             @blur="item.change($event,index)"
           ></textarea>
@@ -111,10 +112,9 @@
 </template>
 <script>
 export default {
-  props: ['formatter',"value","formdata"],
+  props: ['formatter','value',"formdata"],
   methods:{
      formSubmit (e) {
-       console.log(e.map.value)
         this.$emit("formSubmit",e)
         }
   },
