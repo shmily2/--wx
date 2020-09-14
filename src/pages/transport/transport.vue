@@ -172,7 +172,7 @@ export default {
           placeholder:"",
           required:false,
           contact:"credit-pay",
-           color:'#07c160',
+          color:'#07c160',
         },{
           title:"运输重量:",
           judge:false,//判断
@@ -257,7 +257,7 @@ export default {
           //选中
           onSearch(index,ind){
             this.activeaction=ind;
-            that.value.dept=this.actions[ind].name
+            that.value.dangerGoodName=this.actions[ind].name
             this.showsecect=false
             this.judge=true;
           },
@@ -275,7 +275,7 @@ export default {
           color:"#1989fa",
           showsecect:false,
           activeaction:'',
-          show:true,
+          show:false,
           searchvalue:'',
           actions:[
             {

@@ -250,7 +250,7 @@ export default {
           color:"#1989fa",
           showsecect:false,
           activeaction:'',
-         show:true,
+         show:false,
           searchvalue:'',
           actions:[
             {
@@ -332,7 +332,8 @@ export default {
         //选中
         onSearch(index,ind){
             this.activeaction=ind;
-            that.value.hwcode=this.actions[ind].name
+            that.value.HWCODE=this.actions[ind].name
+            that.value.TYPENAME =this.actions[ind].TYPENAME
             this.showsecect=false
             this.judge=true;
             },
@@ -342,7 +343,7 @@ export default {
           type:"text",
           disabled:true,
           show:true,
-          prop:"hwname",
+          prop:"TYPENAME",
           placeholder:"",
           required:true,
           contact:"warn-o",
