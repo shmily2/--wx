@@ -386,6 +386,12 @@ export default {
                   }else{
                      that.formdata[i].show=true;
                   }
+                  if(that.formdata[i].prop){
+                     that.values[that.formdata[i].prop]=''
+                  }
+                  if(that.formdata[i].fileList){
+                      that.formdata[i].fileList=[];
+                  }
                 }
                 return
              }else{
@@ -741,7 +747,7 @@ export default {
           type:"upload",
           disabled:true,
           required:false,
-            show:false,
+          show:false,
           fileList: [],
            afterRead(event,index){
             const { file } = event.mp.detail;
@@ -804,7 +810,16 @@ export default {
           this.formdata.some((elem,index,arr)=>{
             if(elem.judge==false && elem.show==true){
               return Toast(elem.message)
-            };
+            }else{
+                this.formdata.filter((item) => {
+                  console.log(item)
+                    // if(item.fileList.length > 0){
+                    //     event.mp.detail.value.push("item[prop]:item.fileList")
+                    // }
+                    return event
+                });
+                console.log(event)
+            }
           })
         },
         clearImg(e){
